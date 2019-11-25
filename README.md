@@ -63,19 +63,46 @@ $$
 进而，每小时内有k辆车通过该位置的概率P\(X=k\)为：
 
 $$
-P(X=k) = C_{60}^k \cdot (\frac{λ}{60})^k \cdot (1-\frac{λ}{60})^{60-k}
+P(X=k) = C_{60}^k \cdot (\frac{λ}{60})^k \cdot (1-\frac{λ}{60})^{60-k} \tag{1.1}
 $$
 
 好的，现在我们有了一个比较简单的模型了。就像上面提到的，如果一分钟内有不止一辆车通过该位置怎么办？——切分成秒级。同理如果一秒内也有不止一辆车通过该位置怎么办？——切分成毫秒级。
 
 那我们就需要无限切分，也就是Δt→0的极限（**求出的这个极限值就是Poisson Distribution**）：
 
-* 在我们推导公式之前，先引入几个求极限的近似值：
-  * 
+* 在我们推导公式之前，我们先引入下面两个等式（如果不了解这两个灯饰等式，推荐看一下先本文最后的注释）。
+
+$$
+①\lim_{x\rightarrow‎\infty}(1+\frac{a}{x})^x = e^a \text{,} \space \space a \text{为常数} \\
+② \frac{x!}{(x-k)!} = x \cdot (x-1) \cdot (x-2)  \cdot \cdot \cdot  (x-k+1) \\
+③\lim_{x\rightarrow a}{f(x) \cdot g(x)} = \lim_{x\rightarrow a}{f(x)} \cdot \lim_{x\rightarrow a}{g(x)}
+$$
+
+现在我们来计算上面\(1.1\)式的极限：
+
+$$
+P(X=k) = \lim_{n\rightarrow\infty} C_n^k \cdot (\frac{λ}{n})^k \cdot (1-\frac{λ}{n})^{n-k} \\
+= \lim_{n\rightarrow\infty}\frac{n!}{(n-k)! \cdot k!} \cdot \frac{λ^k}{n^k}(1-\frac{λ}{n})^n \cdot (1-\frac{λ}{n})^{-k} \\
+= \lim_{n\rightarrow\infty}\frac{n\cdot(n-1)\cdot(n-2)\cdot\cdot\cdot(n-k+1)}{n^k} \cdot \frac{λ^k}{k!} \\
+\text{注意，前一项分式的分子是从} n\text{到} (n-k+1)\text{共}k \text{项。}\\
+\text{因此，分子展开后的多项式的最高次项指数为}k。 \\
+\text{所以第一项分式的极限（根据洛必达法则）就是1} \\
+\text{然后我们根据③，将乘法拆开成两个极限，得到如下式子：}\\
+\lim_{x\rightarrow \infty} {\frac{n^k + ...}{n^k}}\cdot \lim_{x\rightarrow \infty}{\frac{λ^k}{k!} \cdot \lim_{x\rightarrow \intty}{1-\frac{λ}{n}}}
+$$
 
 
 
 
+
+
+
+$$
+\lim_{x\rightarrow‎\infty}(1+\frac{a}{x})^x = e^a \text{,} \space \space a \text{为常数。证明：}\\
+\text{令} \frac{1}{n}=\frac{a}{x}\text{，则有}x=n \cdot a \text{。那么：} \\
+\lim_{x\rightarrow‎\infty}(1+\frac{a}{x})^x = \lim_{n\rightarrow‎\infty}(1+\frac{1}{n})^{x \cdot a} = \lim_{n\rightarrow‎\infty}{((1+\frac{1}{n})^n)^a} \\
+\text{其中}\lim_{n\rightarrow‎\infty}{(1+\frac{1} {n})^n} \text{这部分是趋向于}e \text{的，所以上面的等式得证。}
+$$
 
 
 
