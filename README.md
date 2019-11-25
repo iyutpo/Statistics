@@ -82,20 +82,18 @@ $$
 
 $$
 P(X=k) = \lim_{n\rightarrow\infty} C_n^k \cdot (\frac{λ}{n})^k \cdot (1-\frac{λ}{n})^{n-k} \\
-= \lim_{n\rightarrow\infty}\frac{n!}{(n-k)! \cdot k!} \cdot \frac{λ^k}{n^k}(1-\frac{λ}{n})^n \cdot (1-\frac{λ}{n})^{-k} \\
-= \lim_{n\rightarrow\infty}\frac{n\cdot(n-1)\cdot(n-2)\cdot\cdot\cdot(n-k+1)}{n^k} \cdot \frac{λ^k}{k!} \\
-\text{注意，前一项分式的分子是从} n\text{到} (n-k+1)\text{共}k \text{项。}\\
+= \lim_{n\rightarrow\infty}\frac{n!}{(n-k)! \cdot k!} \cdot \frac{λ^k}{n^k} \cdot (1-\frac{λ}{n})^n \cdot (1-\frac{λ}{n})^{-k}\\
+= \lim_{n\rightarrow\infty}\frac{n\cdot(n-1)\cdot(n-2)\cdot\cdot\cdot(n-k+1)}{n^k} \cdot \frac{λ^k}{k!} (1-\frac{λ}{n})^n \cdot (1-\frac{λ}{n})^{-k}\\
+\text{注意，最前面一项分式的分子是从} n\text{到} (n-k+1)\text{共}k \text{项。}\\
 \text{因此，分子展开后的多项式的最高次项指数为}k。 \\
 \text{所以第一项分式的极限（根据洛必达法则）就是1} \\
-\text{然后我们根据③，将乘法拆开成两个极限，得到如下式子：}\\
-\lim_{x\rightarrow \infty} {\frac{n^k + ...}{n^k}}\cdot \lim_{x\rightarrow \infty}{\frac{λ^k}{k!} \cdot \lim_{x\rightarrow \intty}{1-\frac{λ}{n}}}
+\text{然后我们根据③，将乘法拆开分别求极限，得到如下式子：}\\
+= \lim_{x\rightarrow \infty} {\frac{n^k + ...}{n^k}}\cdot \lim_{x\rightarrow \infty}{\frac{λ^k}{k!} \cdot \lim_{x\rightarrow \infty}{(1-\frac{λ}{n})^n \cdot \lim_{x\rightarrow \infty}(1-\frac{λ}{n})^{-k}}} \\
+= 1 \cdot \frac{λ^k}{k!} \cdot e^{-λ} \cdot 1 \space \space \text{(注意，第三项是根据上面的①得到的)}\\
+= \frac{λ^k}{k!} \cdot e^{-λ}
 $$
 
-
-
-
-
-
+### 注释
 
 $$
 \lim_{x\rightarrow‎\infty}(1+\frac{a}{x})^x = e^a \text{,} \space \space a \text{为常数。证明：}\\
