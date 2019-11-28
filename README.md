@@ -1,5 +1,7 @@
 # Poisson Distribution
 
+如果本文格式有问题，可以也在[这里](https://hackmd.io/bJCaz69bSj-pgUsXtj-YsA)查看。
+
 ### Binomial Distribution
 
 讲Poisson Distribution之前，我们先聊聊Binomial Distribution，如果你已经熟悉这部分，可以略过。
